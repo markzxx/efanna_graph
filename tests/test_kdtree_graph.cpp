@@ -26,6 +26,24 @@ void load_data(char* filename, float*& data, unsigned& num,unsigned& dim){// loa
   in.close();
 }
 
+void load_datai(char* filename, int*& data, int& num,int& dim){// load data with sift10K pattern
+  ifstream in(filename, ios::binary);
+  if(!in.is_open()){cout<<"open file error"<<endl;return;}
+  in.read((char*)&dim,4);
+  in.seekg(0,ios::end);
+  ios::pos_type ss = in.tellg();
+  int fsize = (int)ss;
+  num = fsize / (dim+1) / 4;
+  data = new int[num*dim];
+
+  in.seekg(0,ios::beg);
+  for(int i = 0; i < num; i++){
+    in.seekg(4,ios::cur);
+    in.read((char*)(data+i*dim),dim*4);
+  }
+  in.close();
+}
+
 int main(int argc, char** argv){
   if(argc!=6){std::cout<< argv[0] <<" data_file nTrees mLevel K saving_graph"<<std::endl; exit(-1);}
   float* data_load = NULL;
