@@ -30,7 +30,6 @@ class IndexGraph : public Index {
   virtual void Save(const char *filename)override;
   virtual void Load(const char *filename)override;
 
-
   virtual void Build(size_t n, const float *data, const Parameters &parameters) override;
 
   virtual void Search(
@@ -45,16 +44,14 @@ class IndexGraph : public Index {
 
  protected:
   typedef std::vector<nhood> KNNGraph;
-  typedef std::vector<std::vector<unsigned > > CompactGraph;
   typedef std::vector<LockNeighbor > LockGraph;
-
+//    typedef std::vector<std::vector<unsigned > > CompactGraph;
+//    CompactGraph final_graph_;
   Index *initializer_;
   KNNGraph graph_;
-  CompactGraph final_graph_;
 
 
-
- private:
+private:
   void InitializeGraph(const Parameters &parameters);
   void InitializeGraph_Refine(const Parameters &parameters);
   void NNDescent(const Parameters &parameters);

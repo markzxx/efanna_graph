@@ -82,12 +82,12 @@ class IndexKDtree : public Index {
 
  protected:
   typedef std::vector<nhood> KNNGraph;
-  typedef std::vector<std::vector<unsigned > > CompactGraph;
+//  typedef std::vector<std::vector<unsigned > > CompactGraph;
   typedef std::set<Candidate, std::greater<Candidate> > CandidateHeap;
 
   Index *initializer_;
   KNNGraph graph_;
-  CompactGraph final_graph_;
+//  CompactGraph final_graph_;
   std::vector<CandidateHeap> knn_graph;
 
   enum

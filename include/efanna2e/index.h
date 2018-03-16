@@ -43,6 +43,10 @@ class Index {
   inline size_t GetSizeOfDataset() const { return nd_; }
 
   inline const float *GetDataset() const { return data_; }
+
+    typedef std::vector<std::vector<unsigned> > CompactGraph;
+    CompactGraph final_graph_;
+
  protected:
   const size_t dimension_;
   const float *data_;
