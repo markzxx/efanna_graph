@@ -122,15 +122,15 @@ void IndexGraph::update(const Parameters &parameters) {
 void IndexGraph::NNDescent(const Parameters &parameters) {
   unsigned iter = parameters.Get<unsigned>("iter");
   std::mt19937 rng(rand());
-  std::vector<unsigned> control_points(_CONTROL_NUM);
-  std::vector<std::vector<unsigned> > acc_eval_set(_CONTROL_NUM);
-  GenRandom(rng, &control_points[0], control_points.size(), nd_);
-  generate_control_set(control_points, acc_eval_set, nd_);
+//  std::vector<unsigned> control_points(_CONTROL_NUM);
+//  std::vector<std::vector<unsigned> > acc_eval_set(_CONTROL_NUM);
+//  GenRandom(rng, &control_points[0], control_points.size(), nd_);
+//  generate_control_set(control_points, acc_eval_set, nd_);
   for (unsigned it = 0; it < iter; it++) {
     join();
     update(parameters);
     //checkDup();
-    eval_recall(control_points, acc_eval_set);
+//    eval_recall(control_points, acc_eval_set);
     std::cout << "iter: " << it << std::endl;
   }
 }
