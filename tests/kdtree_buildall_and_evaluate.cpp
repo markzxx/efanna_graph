@@ -78,7 +78,6 @@ int main(int argc, char **argv) {
     paras.Set<unsigned>("nTrees", nTrees);
     paras.Set<unsigned>("mLevel", mLevel);
 
-
     data_load = efanna2e::data_align(data_load, points_num, dim);//one must align the data before build
 //    efanna2e::IndexRandom init_index(dim, points_num);
     efanna2e::IndexKDtree init_index(dim, points_num, efanna2e::L2, nullptr);
@@ -108,8 +107,9 @@ int main(int argc, char **argv) {
         for (unsigned j = 0; j < K; j++) {
             unsigned k = 0;
             for (; k < K; k++) {
-                if (graph_truth[i * dim + j] == final_result[i][j]) break;
+                if (graph_truth[i * dim + j] == final_result[i][k]) break;
             }
+
             if (k == K)cnt++;
         }
     }
